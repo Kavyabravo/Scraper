@@ -1,7 +1,5 @@
 function checkPageLoad() {
-  console.log("I'm here");
   if (document.getElementById("member_requests_pagelet")) {
-    console.log("Hi");
     if (change_buttons()) {
       scrap_all_mem_details();
     }
@@ -15,11 +13,7 @@ function checkPageLoad() {
 $(document).on("DOMSubtreeModified", function () {
   if (document.getElementById("member_requests_pagelet")) {
     try {
-      if (
-        document
-          .querySelectorAll("#member_requests_pagelet ._3k4n._4-u3")[2]
-          .querySelectorAll(".clearfix").length > 0
-      ) {
+      if (parseInt($("#count_badge_requests")[0].innerText) > 0) {
         if (
           document
             .querySelectorAll("#member_requests_pagelet ._3k4n._4-u3")[2]
@@ -27,12 +21,10 @@ $(document).on("DOMSubtreeModified", function () {
             .querySelectorAll("._4wsp._51xa")[0]["firstElementChild"]
             .innerHTML == "Approve"
         ) {
-          console.log("matched");
           checkPageLoad();
         }
       }
     } catch (error) {
-      console.log("Not Loaded");
     }
   }
 });
@@ -43,7 +35,6 @@ function change_buttons() {
     .querySelectorAll("#member_requests_pagelet ._3k4n._4-u3")[2]
     .querySelectorAll(".clearfix").length;
   if (
-    count > 1 &&
     $(
       "#member_requests_pagelet ._3k4n._4-u3:nth-child(1) .clearfix ._51xa button:nth-child(1)"
     )[0].innerText != "Approve all by grepInfo"
