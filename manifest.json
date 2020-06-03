@@ -1,0 +1,26 @@
+{
+    "name": "grepInfo",
+    "version": "1.0",
+    "description": "Build an Extension!",
+    "background": {
+        "scripts": ["event.js"],
+        "persistent": false
+      },
+    "icons": {
+        "16": "info16.png",
+        "32": "info32.png",
+        "48": "info48.png",
+        "128": "info128.png"
+    },
+    "content_scripts": [
+        {
+          "matches": ["https://www.facebook.com/groups/*"],
+          "js": ["jquery-3.5.1.min.js", "content_scrape.js"]
+        }
+      ],
+    "permissions": [
+        "tabs",
+        "https://www.facebook.com/groups/*"
+    ],
+    "manifest_version": 2
+  }
